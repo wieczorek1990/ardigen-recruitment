@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+
+
 def fizzbuzz(number):
     multiple_of_three = number % 3 == 0
     multiple_of_five = number % 5 == 0
@@ -10,14 +13,15 @@ def fizzbuzz(number):
     else:
         print(number)
 
+
 def main():
     print('Please input n:')
-    n = input()
+    n = int(input())
     print('Please input m:')
-    m = input()
-    input_ok = 1 <= n and n < m and m <= 10000
+    m = int(input())
+    input_ok = 1 <= n < m <= 10000
     if not input_ok:
-        print 'Invalid input'
+        print('Invalid input')
         exit(1)
     print('Result:')
     for number in range(n, m + 1):
