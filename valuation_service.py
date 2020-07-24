@@ -54,10 +54,13 @@ def compute_result(data, currencies, matchings):
             total_quantity = 0
             for record in records:
                 total_quantity += record[3]
-                total_price += currencies[currency] * record[3] * record[1]
+                if currency == BASE_CURRENCY:
+                    total_price += currencies[currency] * record[3] * record[1]
+                else:
+                    total_price += record[3] * record[1]
             result[matching_id]['currency'] = currency
             result[matching_id]['total_price'] = total_price
-            result[matching_id]['avg_price'] = total_price / total_quantity
+            result[matching_id]['avg_price'] = round(total_price / total_quantity, 2)
         except KeyError:
             print('Invalid data, empty data set')
             exit(1)
